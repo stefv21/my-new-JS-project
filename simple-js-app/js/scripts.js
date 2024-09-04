@@ -16,11 +16,11 @@ for (let i=0; i < pokemonlist.length; i++){
     let pokemon = pokemonlist[i];
 
     if (height < 4) {
-        console.log(`${pokemon.name} (Height: ${pokemon.height}) is small`);
+        document.write(`${pokemon.name} (Height: ${pokemon.height}) is small`);
       } else if (height >=5 && height <=6) {
-        console.log(`${pokemon.name} (Height: ${pokemon.height}) is average`);
+        document.write(`${pokemon.name} (Height: ${pokemon.height}) is average`);
       } else {
-        console.log(`${pokemon.name} (Height: ${pokemon.height}) Wow, that's big!`);
+        document.write(`${pokemon.name} (Height: ${pokemon.height}) Wow, that's big!`);
       }
     }
 
