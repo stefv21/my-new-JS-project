@@ -1,7 +1,13 @@
 
 
+
+(function() {
+
+
 let pokemon = 'pokemonList';
 console.log(typeof pokemon);
+
+
 
 
 let pokemonlist = [
@@ -11,9 +17,11 @@ let pokemonlist = [
 ];
 
 
-for (let i=0; i < pokemonlist.length; i++){
-    let height = parseFloat (pokemonlist[i].height); 
-    let pokemon = pokemonlist[i];
+pokemonlist.forEach(pokemon => {
+    let height = parseFloat(pokemon.height);
+
+
+
 
     if (height < 4) {
         document.write(`${pokemon.name} (Height: ${pokemon.height}) is small`);
@@ -22,5 +30,8 @@ for (let i=0; i < pokemonlist.length; i++){
       } else {
         document.write(`${pokemon.name} (Height: ${pokemon.height}) Wow, that's big!`);
       }
-    }
+
+    });
+
+})(); 
 
