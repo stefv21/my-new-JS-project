@@ -1,37 +1,58 @@
+const pokemonRepository = (function() {
+    // Private array to hold Pokémon
+    let pokemonList = [
+        { name: 'pikachu', type: 'electric', height: '7' },
+        { name: 'charmeleon', type: 'fire', height: '3' },
+        { name: 'pidgeot', type: 'normal', height: '6' }
+    ];
 
+    // Function to get all Pokémon
+    function getAll() {
+        return pokemonList;
+    }
 
+    // Function to add a Pokémon
+    function add(pokemon) {
+        if (pokemon && pokemon.name && pokemon.type && pokemon.height) {
+            pokemonList.push(pokemon);
+        } else {
+            console.error('Invalid Pokémon item');
+        }
 
-(function() {
+    // Function to display Pokémon information
+    function displayPokemonInfo() {
+        pokemonList.forEach(pokemon => {
+            let height = parseFloat(pokemon.height); // Convert height to a number
 
+            // Categorize Pokémon based on height and display result
+            if (height < 4) {
+                document.write(`${pokemon.name} (Height: ${pokemon.height}) is small<br>`);
+            } else if (height >= 5 && height <= 6) {
+                document.write(`${pokemon.name} (Height: ${pokemon.height}) is average<br>`);
+            } else {
+                document.write(`${pokemon.name} (Height: ${pokemon.height}) Wow, that's big!<br>`);
+            }
+        });
+    }
 
-let pokemon = 'pokemonList';
-console.log(typeof pokemon);
+    // Return an object with methods as both keys and values
+    return {
+        getAll: getAll,
+        add: add,
+        displayPokemonInfo: displayPokemonInfo
+    };
+})();
 
+// Use the public method to get all Pokémon and iterate over them
+pokemonRepository.getAll().forEach(pokemon => {
+    let height = parseFloat(pokemon.height); // Convert height to a number
 
-
-
-let pokemonlist = [
-  { name: 'pikachu', type: 'electric', height: '7'},
-  { name: 'charmeleon', type: 'fire', height: '3'},
-  { name: 'pidgeot', type: 'normal', height: '6'}
-];
-
-
-pokemonlist.forEach(pokemon => {
-    let height = parseFloat(pokemon.height);
-
-
-
-
+    
     if (height < 4) {
-        document.write(`${pokemon.name} (Height: ${pokemon.height}) is small`);
-      } else if (height >=5 && height <=6) {
-        document.write(`${pokemon.name} (Height: ${pokemon.height}) is average`);
-      } else {
-        document.write(`${pokemon.name} (Height: ${pokemon.height}) Wow, that's big!`);
-      }
-
-    });
-
-})(); 
-
+        document.write(`${pokemon.name} (Height: ${pokemon.height}) is small<br>`);
+    } else if (height >= 5 && height <= 6) {
+        document.write(`${pokemon.name} (Height: ${pokemon.height}) is average<br>`);
+    } else {
+        document.write(`${pokemon.name} (Height: ${pokemon.height}) Wow, that's big!<br>`);
+    }
+});
