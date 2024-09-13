@@ -1,4 +1,4 @@
-const pokemonRepository = (function() {
+const pokemonRepository = (function () {
     // Private array to hold Pokémon
     let pokemonList = [
         { name: 'pikachu', type: 'electric', height: '7' },
@@ -18,6 +18,7 @@ const pokemonRepository = (function() {
         } else {
             console.error('Invalid Pokémon item');
         }
+    }
 
     // Function to display Pokémon information
     function displayPokemonInfo() {
@@ -32,7 +33,17 @@ const pokemonRepository = (function() {
             } else {
                 document.write(`${pokemon.name} (Height: ${pokemon.height}) Wow, that's big!<br>`);
             }
+
         });
+    }
+
+    function addListItem(pokemon) {
+        let pokemonList = document.querySelector(".pokemonList");
+        let listpokemon = document.createElement("li");
+        let button = document.createElement("button");
+        button.innerText = "pokemon.name";
+        button.classList.add("button-class");
+        pokemonList.appendChild(listpokemon);
     }
 
     // Return an object with methods as both keys and values
@@ -40,19 +51,11 @@ const pokemonRepository = (function() {
         getAll: getAll,
         add: add,
         displayPokemonInfo: displayPokemonInfo
+        addListItem: addListItem
     };
 })();
 
 // Use the public method to get all Pokémon and iterate over them
-pokemonRepository.getAll().forEach(pokemon => {
-    let height = parseFloat(pokemon.height); // Convert height to a number
+pokemonRepository.getAll().forEachfunction(pokemon);
+pokemonRepository.addListItem(pokemon);
 
-    
-    if (height < 4) {
-        document.write(`${pokemon.name} (Height: ${pokemon.height}) is small<br>`);
-    } else if (height >= 5 && height <= 6) {
-        document.write(`${pokemon.name} (Height: ${pokemon.height}) is average<br>`);
-    } else {
-        document.write(`${pokemon.name} (Height: ${pokemon.height}) Wow, that's big!<br>`);
-    }
-});
