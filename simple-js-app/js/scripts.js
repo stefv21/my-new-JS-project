@@ -1,4 +1,4 @@
-const pokemonRepository = function () {
+const pokemonRepository = (function () {
     // Private array to hold Pokémon
     let pokemonList = [
         { name: 'pikachu', type: 'electric', height: '7' },
@@ -45,25 +45,22 @@ const pokemonRepository = function () {
         button.classList.add("button-class");
         listpokemon.appendChild (button)
         pokemonList.appendChild(listpokemon);
-        button.addEventListener('click'), function (_showDetails){
+        button.addEventListener('click', function () {
             console.log(pokemon);
-        }
+        });
     }
     
         function showDetails(pokemon) {
             console.log(pokemon);
         }
-  
-    }
-
-    // Return an object with methods as both keys and values
-    return {
-        getAll: getAll,
-        add: add,
-        displayPokemonInfo: displayPokemonInfo,
-        addListItem: addListItem,
-        showDetails: showDetails
-    };
+        return {
+            getAll: getAll,
+            add: add,
+            displayPokemonInfo: displayPokemonInfo,
+            addListItem: addListItem,
+            showDetails: showDetails
+        };
+    })();
 
 
  //Use the public method to get all Pokémon and iterate over them
