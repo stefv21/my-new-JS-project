@@ -11,7 +11,7 @@ const pokemonRepository = (function () {
 
     // Function to add a Pokémon
     function add(pokemon) {
-        if (pokemon && pokemon.name && pokemon.type && pokemon.height) {
+        if (pokemon && pokemon.name) {
             pokemonList.push(pokemon);
         } else {
             console.error('Invalid Pokémon item');
@@ -51,21 +51,20 @@ const pokemonRepository = (function () {
         return fetch(apiUrl).then(function (response) {
           return response.json();
         }).then(function (json) {
-          let promises = json.results.forEach(function (item) {
-            let pokemon = {
+         json.results.forEach (function (item) {
+            var pokemon = {
               name: item.name,
               detailsUrl: item.url
             };
             add(pokemon);
-            return loadDetails(pokemon);
+            console.log(pokemon);
           });
-          return Promise.all(promises);
         }).catch(function (e) {
           console.error(e);
         })
       }
     
-    function loadDetails (item) {
+    function loadDetails (pokemon) {
         let url = pokemon.detailsUrl;
         return fetch(url). then (function (response) {
             return response.json();
