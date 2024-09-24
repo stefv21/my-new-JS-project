@@ -84,47 +84,51 @@
 
 
             function showDetails(pokemon) {
-                loadDetails(pokemon).then(function() {
-                    // Create content for the modal with an img tag
-                    let content = `
-                        <h1>${pokemon.name}</h1>
-                        <img src="${pokemon.imageUrl}" alt="${pokemon.name}" />
-                        <p>Height: ${pokemon.height}</p>
-                        <p>Types: ${pokemon.types.map(type => type.type.name).join(', ')}</p>
-                    `;
-                    // Open the modal with Pokémon details
-                    showModal(pokemon.name, content);
-                }).catch(function(e) {
-                    console.error('Failed to load Pokémon details:', e);
-                });
-            }
+                loadDetails(pokemon)
+                  .then(function () {
+                    // Create con
+                    showModal(pokemon);
+                  })
+                  .catch(function (e) {
+                    console.error("Failed to load Pokémon details:", e);
+                  });
+              }
             
             
 
-            function showModal (title, text){
+              function showModal(pokemon) {
+                modalContainer.innerHTML = "";
+                let modal = document.createElement("div");
+                modal.classList.add("modal");
             
-                modalContainer.innerHTML = '';
-                let modal = document.createElement ('div');
-                modalContainer.classList.add ('modal');
-                
-                let closeButtonElement = document.createElement ('button');
-                closeButtonElement.classList.add ('modal-close');
-                closeButtonElement.innerText = 'close'; 
-                closetitleElement.addEventListener('click', hidemodal);
-
-                let titleElement = document.createElement ('h1');
-                titleElement.innerText = text;
-
-                let contentElement = document.createElement ('p');
-                contentElement.innerText = text;
-
+                let closeButtonElement = document.createElement("button");
+                closeButtonElement.classList.add("modal-close");
+                closeButtonElement.innerText = "close";
+                closeButtonElement.addEventListener("click", hideModal);
+            
+                let titleElement = document.createElement("h1");
+                titleElement.innerText = pokemon.name;
+            
+                let contentElement = document.createElement("p");
+                contentElement.innerHTML = pokemon.name;
+            
+                let imageElement = document.createElement('img');
+                imageElement.classList.add('modal-img');
+                imageElement.style.width = '50%';
+                imageElement.setAttribute('src',pokemon.imageUrl)
+            
+                let heightElement = document.createElement('p');
+                heightElement.textContent = `Height: ${pokemon.height}`;
+            
+                contentElement.appendChild(heightElement);
+                contentElement.appendChild(imageElement);
+            
                 modal.appendChild(closeButtonElement);
                 modal.appendChild(titleElement);
                 modal.appendChild(contentElement);
                 modalContainer.appendChild(modal);
-                modalContainer.classList.add('is-visible');
-            
-            }
+                modalContainer.classList.add("is-visible");
+              }
 
             function hideModal() {
                 let modalContainer = document.querySelector('#modal-container');
@@ -206,9 +210,7 @@
             ('click', ()=> {
                 showModal('Modal title', 'This is the modal content!');
             });
-            }
             
-        
 
 
                 function showErrorMessage(input, message) {
@@ -240,7 +242,7 @@
                     loadDetails: loadDetails
                 };
         
-
+            })();
 
         //Use the public method to get all Pokémon and iterate over them
 
