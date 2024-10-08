@@ -16,7 +16,9 @@ Pokémon Pokedex is an application that allows users to view a list of Pokémon 
 - [Popper.js](https://popper.js.org/) (version 2.10.2)
 - [Bootstrap](https://getbootstrap.com/) (version 4.5.2)
 
-Find the source code for this project on GitHub: [GitHub Repository]https://github.com/stefv21/my-new-JS-project.git
+Find the source code for this project on GitHub: 
+
+GitHub Repository: https://github.com/stefv21/my-new-JS-project.git
 
 ## Demo
 You can view the live version of the Pokémon Pokedex here: http://127.0.0.1:5500/index.html
